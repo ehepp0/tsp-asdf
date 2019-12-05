@@ -75,21 +75,12 @@ public class Road implements Comparable<Road> {
 	}
 	@Override
 	public boolean equals(Object o) {
-		if (o == this) {
-			return true;
-		}
-		Road other;
 		try {
-			other = (Road) o;
+			Road other = (Road) o;
+			return source.equals(other.getSource()) && destination.equals(other.getDestination());
 		} catch (ClassCastException e) {
 			return false;
 		}
-		//graph is not directed, so order of source and destination do not matter
-		return contains(other.source) && contains(other.destination);
-	}
-	@Override
-	public int hashCode() {
-		return source.hashCode() + destination.hashCode();
 	}
 	@Override
 	public String toString() {
